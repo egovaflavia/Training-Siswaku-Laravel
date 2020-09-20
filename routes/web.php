@@ -47,70 +47,9 @@ Route::get('sampledata', function () {
             'created_at' => '2020-03-10 19:10:15',
             'updated_at' => '2020-03-10 19:10:15'
         ],
-        [
-            'nisn' => '1002',
-            'nama_siswa' => 'Egova',
-            'tanggal_lahir' => '1990-02-11',
-            'jenis_kelamin' => 'L',
-            'created_at' => '2020-03-10 19:10:15',
-            'updated_at' => '2020-03-10 19:10:15'
-        ],
-        [
-            'nisn' => '1003',
-            'nama_siswa' => 'Egova',
-            'tanggal_lahir' => '1990-02-11',
-            'jenis_kelamin' => 'L',
-            'created_at' => '2020-03-10 19:10:15',
-            'updated_at' => '2020-03-10 19:10:15'
-        ], [
-            'nisn' => '1004',
-            'nama_siswa' => 'Egova',
-            'tanggal_lahir' => '1990-02-11',
-            'jenis_kelamin' => 'L',
-            'created_at' => '2020-03-10 19:10:15',
-            'updated_at' => '2020-03-10 19:10:15'
-        ], [
-            'nisn' => '1005',
-            'nama_siswa' => 'Egova',
-            'tanggal_lahir' => '1990-02-11',
-            'jenis_kelamin' => 'L',
-            'created_at' => '2020-03-10 19:10:15',
-            'updated_at' => '2020-03-10 19:10:15'
-        ], [
-            'nisn' => '1006',
-            'nama_siswa' => 'Egova',
-            'tanggal_lahir' => '1990-02-11',
-            'jenis_kelamin' => 'L',
-            'created_at' => '2020-03-10 19:10:15',
-            'updated_at' => '2020-03-10 19:10:15'
-        ], [
-            'nisn' => '1007',
-            'nama_siswa' => 'Egova',
-            'tanggal_lahir' => '1990-02-11',
-            'jenis_kelamin' => 'L',
-            'created_at' => '2020-03-10 19:10:15',
-            'updated_at' => '2020-03-10 19:10:15'
-        ], [
-            'nisn' => '1008',
-            'nama_siswa' => 'Egova',
-            'tanggal_lahir' => '1990-02-11',
-            'jenis_kelamin' => 'L',
-            'created_at' => '2020-03-10 19:10:15',
-            'updated_at' => '2020-03-10 19:10:15'
-        ], [
-            'nisn' => '1009',
-            'nama_siswa' => 'Egova',
-            'tanggal_lahir' => '1990-02-11',
-            'jenis_kelamin' => 'L',
-            'created_at' => '2020-03-10 19:10:15',
-            'updated_at' => '2020-03-10 19:10:15'
-        ], [
-            'nisn' => '1010',
-            'nama_siswa' => 'Egova',
-            'tanggal_lahir' => '1990-02-11',
-            'jenis_kelamin' => 'L',
-            'created_at' => '2020-03-10 19:10:15',
-            'updated_at' => '2020-03-10 19:10:15'
-        ],
     ]);
 });
+
+// Eloquent: Collection
+Route::get('tes-collection', 'SiswaController@tesCollection');
+

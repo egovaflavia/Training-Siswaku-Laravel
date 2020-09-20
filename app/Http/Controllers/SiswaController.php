@@ -61,4 +61,15 @@ class SiswaController extends Controller
         $siswa->delete();
         return redirect('siswa');
     }
+
+    // Eloquent: Collection
+    public function tesCollection()
+    {
+        $orang = ['rasmus lerdorf', 'taylor otwel', 'brenden eich'];
+        $collection = collect($orang)->map(function ($nama) {
+            return ucwords($nama);
+        });
+        return $collection;
+    }
+
 }
