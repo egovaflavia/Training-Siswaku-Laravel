@@ -4,6 +4,8 @@
     <div id="siswa" class="mt-3">
         <h2>Detail Siswa</h2>
         {!! link_to('siswa', 'Kembali',['class'=>'btn btn-success btn-sm mb-3 mt-3']) !!}
+        <br>
+        <br>
         <table class="table table-stiped">
             <tr>
                 <th>NISN</th>
@@ -15,7 +17,7 @@
             </tr>
             <tr>
                 <th>Tanggal Lahir</th>
-                <td>{{$siswa->tanggal_lahir}}</td>
+                <td>{{$siswa->tanggal_lahir->format('d-m-Y')}}</td>
             </tr>
             <tr>
                 <th>Jenis Kelamin</th>

@@ -23,7 +23,7 @@
                     <td>{{++$no}}</td>
                     <td>{{$row->nisn}}</td>
                     <td>{{$row->nama_siswa}}</td>
-                    <td>{{$row->tanggal_lahir}}</td>
+                    <td>{{$row->tanggal_lahir->format('d-m-Y')}}</td>
                     <td>{{($row->jenis_kelamin == 'L') ? 'Laki-Laki' : 'Perempuan'}}</td>
                     <td>
                         <div class="box-button">

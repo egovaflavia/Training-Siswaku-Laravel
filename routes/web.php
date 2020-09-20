@@ -53,3 +53,5 @@ Route::get('sampledata', function () {
 // Eloquent: Collection
 Route::get('tes-collection', 'SiswaController@tesCollection');
 
+// Date mutator
+Route::get('date-mutator', 'SiswaController@dateMutator');

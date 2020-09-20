@@ -15,9 +15,18 @@ class Siswa extends Model
         'jenis_kelamin'
     ];
 
+    // Date Mutator
+    protected $dates = ['tanggal_lahir'];
+
     // Accessor, Merubah lowercase dari database ke view
     public function getNamaSiswaAttribute($nama_siswa)
     {
         return ucwords($nama_siswa);
     }
+
+    // Mutator mengubah data lowercase sblm di simpan di database
+    // public function setNamaSiswaAttribute($nama_siswa)
+    // {
+    //     return strtolower($nama_siswa);
+    // }
 }

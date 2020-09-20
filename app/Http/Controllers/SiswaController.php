@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Siswa;
+use Validator;
 
 class SiswaController extends Controller
 {
@@ -20,7 +21,24 @@ class SiswaController extends Controller
         // $siswa->save();
 
         // Cara singkat
-        Siswa::create($request->all());
+        // Siswa::create($request->all());
+        // return redirect('siswa');
+
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'nisn' => 'required|string|size:4|unique:siswa,nisn',
+            'nama_siswa' => 'required|string|max:30',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required|in:L,P'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('siswa/create')->withInput()->withErrors($validator);
+        }
+
+        Siswa::create($input);
+
         return redirect('siswa');
     }
 
@@ -72,4 +90,10 @@ class SiswaController extends Controller
         return $collection;
     }
 
+    // Mutator
+    public function dateMutator()
+    {
+        $siswa = Siswa::findOrFail(15);
+        return "Tanggal lahir {$siswa->nama_siswa} adalah {$siswa->tanggal_lahir->format('d-m-Y')}";
+    }
 }
