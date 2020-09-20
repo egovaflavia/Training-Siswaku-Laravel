@@ -11,6 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/', 'PagesController@homepage');
+
+Route::get('about', 'PagesController@about');
+
+// Siswa
+Route::get('/siswa', 'SiswaController@index');
+
+// Halaman Rahasia
+Route::get('halaman-rahasia', [
+    'as' => 'secret',
+    'uses' => 'RahasiaController@halamanRahasia'
+]);
+
+Route::get('showmesecret', 'RahasiaController@showMeSecret');
