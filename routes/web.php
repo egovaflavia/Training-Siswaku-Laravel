@@ -20,8 +20,6 @@ Route::get('/', 'PagesController@homepage');
 
 Route::get('about', 'PagesController@about');
 
-// Siswa
-Route::get('/siswa', 'SiswaController@index');
 
 // Halaman Rahasia
 Route::get('halaman-rahasia', [
@@ -30,3 +28,89 @@ Route::get('halaman-rahasia', [
 ]);
 
 Route::get('showmesecret', 'RahasiaController@showMeSecret');
+
+// Siswa
+Route::get('/siswa', 'SiswaController@index');
+Route::get('siswa/create', 'SiswaController@create');
+Route::get('siswa/{id}', 'SiswaController@show');
+Route::post('siswa', 'SiswaController@store');
+Route::get('siswa/{id}/edit', 'SiswaController@edit');
+Route::patch('siswa/{id}', 'SiswaController@update');
+Route::delete('siswa/{id}', 'SiswaController@destroy');
+Route::get('sampledata', function () {
+    DB::table('siswa')->insert([
+        [
+            'nisn' => '1001',
+            'nama_siswa' => 'Egova',
+            'tanggal_lahir' => '1990-02-11',
+            'jenis_kelamin' => 'L',
+            'created_at' => '2020-03-10 19:10:15',
+            'updated_at' => '2020-03-10 19:10:15'
+        ],
+        [
+            'nisn' => '1002',
+            'nama_siswa' => 'Egova',
+            'tanggal_lahir' => '1990-02-11',
+            'jenis_kelamin' => 'L',
+            'created_at' => '2020-03-10 19:10:15',
+            'updated_at' => '2020-03-10 19:10:15'
+        ],
+        [
+            'nisn' => '1003',
+            'nama_siswa' => 'Egova',
+            'tanggal_lahir' => '1990-02-11',
+            'jenis_kelamin' => 'L',
+            'created_at' => '2020-03-10 19:10:15',
+            'updated_at' => '2020-03-10 19:10:15'
+        ], [
+            'nisn' => '1004',
+            'nama_siswa' => 'Egova',
+            'tanggal_lahir' => '1990-02-11',
+            'jenis_kelamin' => 'L',
+            'created_at' => '2020-03-10 19:10:15',
+            'updated_at' => '2020-03-10 19:10:15'
+        ], [
+            'nisn' => '1005',
+            'nama_siswa' => 'Egova',
+            'tanggal_lahir' => '1990-02-11',
+            'jenis_kelamin' => 'L',
+            'created_at' => '2020-03-10 19:10:15',
+            'updated_at' => '2020-03-10 19:10:15'
+        ], [
+            'nisn' => '1006',
+            'nama_siswa' => 'Egova',
+            'tanggal_lahir' => '1990-02-11',
+            'jenis_kelamin' => 'L',
+            'created_at' => '2020-03-10 19:10:15',
+            'updated_at' => '2020-03-10 19:10:15'
+        ], [
+            'nisn' => '1007',
+            'nama_siswa' => 'Egova',
+            'tanggal_lahir' => '1990-02-11',
+            'jenis_kelamin' => 'L',
+            'created_at' => '2020-03-10 19:10:15',
+            'updated_at' => '2020-03-10 19:10:15'
+        ], [
+            'nisn' => '1008',
+            'nama_siswa' => 'Egova',
+            'tanggal_lahir' => '1990-02-11',
+            'jenis_kelamin' => 'L',
+            'created_at' => '2020-03-10 19:10:15',
+            'updated_at' => '2020-03-10 19:10:15'
+        ], [
+            'nisn' => '1009',
+            'nama_siswa' => 'Egova',
+            'tanggal_lahir' => '1990-02-11',
+            'jenis_kelamin' => 'L',
+            'created_at' => '2020-03-10 19:10:15',
+            'updated_at' => '2020-03-10 19:10:15'
+        ], [
+            'nisn' => '1010',
+            'nama_siswa' => 'Egova',
+            'tanggal_lahir' => '1990-02-11',
+            'jenis_kelamin' => 'L',
+            'created_at' => '2020-03-10 19:10:15',
+            'updated_at' => '2020-03-10 19:10:15'
+        ],
+    ]);
+});
