@@ -129,9 +129,31 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'nisn' => [
+            'required' => 'Kolom NISN harus di isi',
+            'string' => 'Kolom NISN harus berupa string',
+            'size' => 'Kolom NISN harus :size angka',
+            'unique' => 'NISN Sudah terpakai',
         ],
+        'nama_siswa' => [
+            'required' => 'Kolom Nama Siswa harus di isi',
+            'string' => 'Kolom Nama Siswa harus berupa string',
+            'max' => 'Kolom Nama Siswa tidak boleh lebih dari :max karakter',
+        ],
+        'jenis_kelamin' => [
+            'required' => 'Kolom Jenis Kelamin harus di isi',
+            'in' => 'Kolom Jenis Kelamin harus di isi L atau P',
+        ],
+        'tanggal_lahir' => [
+            'required' => 'Kolom Tanggal Lahir harus di isi',
+            'in' => 'Kolom Tanggal Lahir harus di isi format tanggal yang benar',
+        ],
+        'nomor_telepon' => [
+            'unique' => 'Nomor Telepon sudah terpakai',
+            'numeric' => 'Nomor Telepon harus di isi angka',
+            'digits_between' => 'Nomor Telepon harus di atanara :min atau :max digit',
+        ],
+
     ],
 
     /*

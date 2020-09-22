@@ -14,6 +14,7 @@
                     <th>Nama</th>
                     <th>Tgl Lahir</th>
                     <th>Jenis Kelamin</th>
+                    <th>No Telepon</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                     <td>{{$row->nama_siswa}}</td>
                     <td>{{$row->tanggal_lahir->format('d-m-Y')}}</td>
                     <td>{{($row->jenis_kelamin == 'L') ? 'Laki-Laki' : 'Perempuan'}}</td>
+                    <td>{{ !empty($row->telepon->nomor_telepon) ? $row->telepon->nomor_telepon : '-' }}</td>
                     <td>
                         <div class="box-button">
                             {{ link_to('siswa/'.$row->id, 'Detail',['class'=>'btn btn-success btn-sm']) }}

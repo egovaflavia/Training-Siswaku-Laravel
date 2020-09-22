@@ -24,6 +24,11 @@ class Siswa extends Model
         return ucwords($nama_siswa);
     }
 
+    public function telepon()
+    {
+        return $this->hasOne('App\Telepon', 'id_siswa');
+    }
+
     // Mutator mengubah data lowercase sblm di simpan di database
     // public function setNamaSiswaAttribute($nama_siswa)
     // {

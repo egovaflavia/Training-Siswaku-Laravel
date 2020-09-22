@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Siswa;
+use App\Telepon;
 use Validator;
 
 class SiswaController extends Controller
@@ -30,14 +31,18 @@ class SiswaController extends Controller
             'nisn' => 'required|string|size:4|unique:siswa,nisn',
             'nama_siswa' => 'required|string|max:30',
             'tanggal_lahir' => 'required|date',
-            'jenis_kelamin' => 'required|in:L,P'
+            'jenis_kelamin' => 'required|in:L,P',
+            'nomor_telepon' => 'sometimes|nullable|numeric|digits_between:10,15|unique:telepon,nomor_telepon',
         ]);
 
         if ($validator->fails()) {
             return redirect('siswa/create')->withInput()->withErrors($validator);
         }
 
-        Siswa::create($input);
+        $siswa = Siswa::create($input);
+        $telepon = new Telepon();
+        $telepon->nomor_telepon = $request->input('nomor_telepon');
+        $siswa->telepon()->save($telepon);
 
         return redirect('siswa');
     }
@@ -63,13 +68,52 @@ class SiswaController extends Controller
     public function edit($id)
     {
         $siswa = Siswa::findOrFail($id);
+        if (!empty($siswa->telepon->nomor_telepon)) {
+            $siswa->nomor_telepon = $siswa->telepon->nomor_telepon;
+        }
         return view('siswa.edit', compact('siswa'));
     }
 
     public function update($id, Request $request)
     {
         $siswa = Siswa::findOrFail($id);
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'nisn' => 'required|string|size:4|unique:siswa,nisn,' . $request->input('id'),
+            'nama_siswa' => 'required|string|max:30',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required|in:L,P',
+            'nomor_telepon' => 'sometimes|nullable|numeric|digits_between:10,15|unique:telepon,nomor_telepon,' . $request->input('id') . ',id_siswa',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('siswa/' . $id . '/edit')->withInput()->withErrors($validator);
+        }
+
         $siswa->update($request->all());
+
+        if ($siswa->telepon) {
+            // Kika telp diisi, update
+            if ($request->filled('nomor_telepon')) {
+                $telepon = $siswa->telepon;
+                $telepon->nomor_telepon = $request->input('nomor_telepon');
+                $siswa->telepon()->save($telepon);
+            }
+            // jika telp tidak di isi, hapus
+            else {
+                $siswa->telepon()->delete();
+            }
+        }
+        // Nuat entry baru jika sebelumnya tidak ada no telp
+        else {
+            if ($request->filled('nomor_telepon')) {
+                $telepon = new Telepon();
+                $telepon->nomor_telepon = $request->input('nomor_telepon');
+                $siswa->telepon()->save($telepon);
+            }
+        }
+
         return redirect('siswa');
     }
 
