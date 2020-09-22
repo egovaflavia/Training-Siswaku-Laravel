@@ -12,7 +12,8 @@ class Siswa extends Model
         'nisn',
         'nama_siswa',
         'tanggal_lahir',
-        'jenis_kelamin'
+        'jenis_kelamin',
+        'id_kelas',
     ];
 
     // Date Mutator
@@ -28,6 +29,12 @@ class Siswa extends Model
     {
         return $this->hasOne('App\Telepon', 'id_siswa');
     }
+
+    public function kelas()
+    {
+        return $this->belongsTo('App\Kelas', 'id_kelas');
+    }
+
 
     // Mutator mengubah data lowercase sblm di simpan di database
     // public function setNamaSiswaAttribute($nama_siswa)

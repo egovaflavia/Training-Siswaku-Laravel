@@ -17,7 +17,7 @@ class CreateTableTelepon extends Migration
             $table->integer('id_siswa')->unsigned()->primary('id_siswa');
             $table->string('nomor_telepon')->unique();
             $table->timestamps();
-            $table->foreign('id_siswa')->reference('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_siswa')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

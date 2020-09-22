@@ -38,6 +38,22 @@
 </div>
 
 @if ($errors->any)
+    <div class="form-group {{ $errors->has('id_kelas') ? 'has-error' : 'has-success' }}">
+@else
+    <div class="form-group">
+@endif
+    {!! Form::label('id_kelas', 'Kelas', ['class' => 'control-label']) !!}
+    @if (count($list_kelas) > 0)
+        {!! Form::select('id_kelas', $list_kelas, null, ['class' => 'form-control', 'id' => 'id_kelas', 'placeholder' => 'Pilih Kelas']) !!}
+    @else
+        <p>Tiddak ada pilihan kelas</p>
+    @endif
+    @if ($errors->has('id_kelas'))
+        <span class="help-block">{{ $errors->first('id_kelas') }}</span>
+    @endif
+</div>
+
+@if ($errors->any)
     <div class="form-group {{ $errors->has('jenis_kelamin') ? 'has-error' : 'has-success' }}">
 @else
     <div class="form-group">
@@ -58,7 +74,7 @@
 </div>
 
 @if ($errors->any)
-    <div class="form-group {{ $errors->has('nomor_telepon') ? 'has-error' : 'has-success' }}">
+    <div class="form-group {{ $errors->has('id_kelas') ? 'has-error' : 'has-success' }}">
 @else
     <div class="form-group">
 @endif

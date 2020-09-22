@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Siswa;
+use \App\Kelas;
 use App\Telepon;
 use Validator;
 
@@ -33,6 +34,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|in:L,P',
             'nomor_telepon' => 'sometimes|nullable|numeric|digits_between:10,15|unique:telepon,nomor_telepon',
+            'id_kelas' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -56,7 +58,8 @@ class SiswaController extends Controller
 
     public function create()
     {
-        return view('siswa.create');
+        $list_kelas = Kelas::pluck('nama_kelas', 'id');
+        return view('siswa.create', compact('list_kelas'));
     }
 
     public function show($id)

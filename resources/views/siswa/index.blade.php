@@ -12,6 +12,7 @@
                     <th>Np</th>
                     <th>NISN</th>
                     <th>Nama</th>
+                    <th>Kelas</th>
                     <th>Tgl Lahir</th>
                     <th>Jenis Kelamin</th>
                     <th>No Telepon</th>
@@ -22,8 +23,9 @@
                 <?php foreach ($siswas as $no => $row) : ?>
                 <tr>
                     <td>{{++$no}}</td>
-                    <td>{{$row->nisn}}</td>
-                    <td>{{$row->nama_siswa}}</td>
+                    <td>{{$row->nisn }}</td>
+                    <td>{{$row->nama_siswa }}</td>
+                    <td>{{$row->kelas->nama_kelas }}</td>
                     <td>{{$row->tanggal_lahir->format('d-m-Y')}}</td>
                     <td>{{($row->jenis_kelamin == 'L') ? 'Laki-Laki' : 'Perempuan'}}</td>
                     <td>{{ !empty($row->telepon->nomor_telepon) ? $row->telepon->nomor_telepon : '-' }}</td>

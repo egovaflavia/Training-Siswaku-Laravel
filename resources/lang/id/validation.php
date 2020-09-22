@@ -153,7 +153,9 @@ return [
             'numeric' => 'Nomor Telepon harus di isi angka',
             'digits_between' => 'Nomor Telepon harus di atanara :min atau :max digit',
         ],
-
+        'id_kelas' => [
+            'required' => 'Kolom Kelas harus di isi'
+        ],
     ],
 
     /*
