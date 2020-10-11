@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use \App\Siswa;
 use \App\Kelas;
 use App\Telepon;
-use Validator;
 
 class SiswaController extends Controller
 {
@@ -29,7 +28,7 @@ class SiswaController extends Controller
 
         $input = $request->all();
 
-        $validator = Validator::make($input, [
+        $this->validate($request, [
             'nisn' => 'required|string|size:4|unique:siswa,nisn',
             'nama_siswa' => 'required|string|max:30',
             'tanggal_lahir' => 'required|date',
@@ -37,10 +36,6 @@ class SiswaController extends Controller
             'nomor_telepon' => 'sometimes|nullable|numeric|digits_between:10,15|unique:telepon,nomor_telepon',
             'id_kelas' => 'required'
         ]);
-
-        if ($validator->fails()) {
-            return redirect('siswa/create')->withInput()->withErrors($validator);
-        }
 
         $siswa = Siswa::create($input);
         $telepon = new Telepon();
@@ -89,7 +84,7 @@ class SiswaController extends Controller
         $siswa = Siswa::findOrFail($id);
         $input = $request->all();
 
-        $validator = Validator::make($input, [
+        $this->validate($request, [
             'nisn'          => 'required|string|size:4|unique:siswa,nisn,' . $request->input('id'),
             'nama_siswa'    => 'required|string|max:30',
             'tanggal_lahir' => 'required|date',
@@ -97,10 +92,6 @@ class SiswaController extends Controller
             'nomor_telepon' => 'sometimes|nullable|numeric|digits_between:10,15|unique:telepon,nomor_telepon,' . $request->input('id') . ',id_siswa',
             'id_kelas'      => 'required'
         ]);
-
-        if ($validator->fails()) {
-            return redirect('siswa/' . $id . '/edit')->withInput()->withErrors($validator);
-        }
 
         $siswa->update($request->all());
 
