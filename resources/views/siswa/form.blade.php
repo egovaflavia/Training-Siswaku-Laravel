@@ -85,6 +85,23 @@
     @endif
 </div>
 
+@if ($errors->any)
+    <div class="form-group {{ $errors->has('hobi_siswa') ? 'has-error' : 'has-success' }}">
+@else
+    <div class="form-group">
+@endif
+    {!! Form::label('hobi_siswa', 'Hobi', ['class' => 'control-label']) !!}
+    @if (count($list_hobi) > 0 )
+        @foreach ($list_hobi as $key => $value)
+            <div class="checkbox">
+            <label>{!! Form::checkbox('hobi_siswa[]', $key, null) !!} {{ $value }}</label>
+            </div>
+        @endforeach
+    @else
+        <p>Tidak ada pilihan hobi</p>
+    @endif
+</div>
+
 <div class="form-group">
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary form-control']) !!}
 </div>
